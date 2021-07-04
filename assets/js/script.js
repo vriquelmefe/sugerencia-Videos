@@ -21,32 +21,29 @@ class Reproductor extends Multimedia {
     return this.getId();
   }
   playMultimedia() {
-    const playMedia = (() => {
-      return {
-        url: this.url,
-        id: this.id
-      }
-    })();
-    return playMedia;
+    cargarVideos(this.url, this.id);
   }
-  setInicio(tiempo) {
-    const idHTML = document.getElementById(this.id);
-    if (!url || !idHTML) return;
+  setInicio(tiempo = 0) {
+    const idDiv = document.getElementById(id);
+    if (!url || !idDiv) return;
     idHTML.setAttribute("src", `${this.url}?start=${tiempo}`);
   }
 }
-const urlMusica = 'https://www.youtube.com/embed/GfIvfO9o6lo'
-const urlPelicula = 'https://www.youtube.com/embed/iPw5G6evXlc';
-const urlSerie = 'https://www.youtube.com/embed/iGZujqq4Jko?list=PLRzhDG7af-Sw2A4fc23qD3XlvDgwoWeKP';
+const cargarVideos = (() => {
+  const seteoVideo = (url, id) => {
+    const idDiv = document.getElementById(id);
+    if (!url || !idDiv) return;
+    idDiv.setAttribute('src', url)
+  }
+  return seteoVideo
+})();
 
-const divPelicula = document.getElementById('peliculas');
-const divMusica = document.getElementById('musica');
-const divSeries = document.getElementById('series');
-
-const musicaProbar = new Reproductor(urlMusica, divPelicula);
-const videoProbar = new Reproductor(urlPelicula, divMusica);
-const serieProbar = new Reproductor(urlSerie, divSeries);
-
-divMusica.setAttribute('src', musicaProbar.playMultimedia().url);
-divPelicula.setAttribute('src', videoProbar.playMultimedia().url);
-divSeries.setAttribute('src', serieProbar.playMultimedia().url)
+const musicaProbar = new Reproductor('https://www.youtube.com/embed/GfIvfO9o6lo', 'musica');
+const videoProbar = new Reproductor('https://www.youtube.com/embed/iPw5G6evXlc', 'peliculas');
+const serieProbar = new Reproductor('https://www.youtube.com/embed/iGZujqq4Jko?list=PLRzhDG7af-Sw2A4fc23qD3XlvDgwoWeKP', 'series');
+musicaProbar.playMultimedia();
+videoProbar.playMultimedia();
+serieProbar.playMultimedia();
+// divMusica.setAttribute('src', musicaProbar.playMultimedia().url);
+// divPelicula.setAttribute('src', videoProbar.playMultimedia().url);
+// divSeries.setAttribute('src', serieProbar.playMultimedia().url)
