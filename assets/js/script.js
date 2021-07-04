@@ -44,6 +44,3 @@ const serieProbar = new Reproductor('https://www.youtube.com/embed/iGZujqq4Jko?l
 musicaProbar.playMultimedia();
 videoProbar.playMultimedia();
 serieProbar.playMultimedia();
-// divMusica.setAttribute('src', musicaProbar.playMultimedia().url);
-// divPelicula.setAttribute('src', videoProbar.playMultimedia().url);
-// divSeries.setAttribute('src', serieProbar.playMultimedia().url)
