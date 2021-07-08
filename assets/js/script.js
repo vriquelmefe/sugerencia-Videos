@@ -1,9 +1,9 @@
 //funcion IIFE para cargar los videos en cada iframe
 const cargarVideos = (() => {
-  let seteoVideoprivado = (url, id) => {
-    let idDiv = document.getElementById(id);
-    if (!idDiv) return;
-    idDiv.setAttribute("src", url)
+  const seteoVideoprivado = (url, id) => {
+    const idIframe = document.getElementById(id);
+    if (!idIframe) return;
+    idIframe.setAttribute("src", url)
 
   }
   return {
@@ -40,9 +40,9 @@ class Reproductor extends Multimedia {
     }
     //para decirle desde que tiempo comience a funcionar
   setInicio(tiempo = 0) {
-    const idDiv = document.getElementById(this.id);
-    if (!idDiv) return;
-    idDiv.setAttribute("src", `${this.url}?start=${tiempo}`);
+    const idIframe = document.getElementById(this.id);
+    if (!idIframe) return;
+    idIframe.setAttribute("src", `${this.url}?start=${tiempo}`);
   }
 }
 //instanciando cada uno de los archivos
